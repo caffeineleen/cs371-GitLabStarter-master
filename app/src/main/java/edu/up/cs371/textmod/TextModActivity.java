@@ -10,17 +10,22 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity {
+public class TextModActivity extends ActionBarActivity implements View.OnClickListener{
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -31,7 +36,13 @@ public class TextModActivity extends ActionBarActivity {
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
-    @Override
+    //@Override
+
+    private Button button4;
+    private TextView textView;
+    private EditText editText;
+
+
     protected void onCreate(Bundle savedInstanceState) {
 
         // perform superclass initialization; load the layout
@@ -73,6 +84,13 @@ public class TextModActivity extends ActionBarActivity {
         // define a listener for the spinner
         spinner.setOnItemSelectedListener(new MySpinnerListener());
 
+        button4 = (Button)findViewById(R.id.button4);
+        button4.setOnClickListener(this);
+        textView = (TextView) findViewById(R.id.textView);
+        textView.setOnClickListener(this);
+        editText = (EditText) findViewById(R.id.editText);
+
+
     }
 
     /**
@@ -103,6 +121,33 @@ public class TextModActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View v)
+    {
+        if(v == button4)
+        {
+            String text = editText.getText().toString();
+
+            int length = text.length();
+
+            String[] charArray = new String[length+1];
+
+            for(int i = 0; i < length; i++)
+            {
+                charArray[i] = text.substring(i,i+1);
+            }
+
+            String reversed = "";
+
+            for(int i = length-1; i >=0; i--)
+            {
+                reversed += charArray[i];
+            }
+
+            editText.setText(reversed);
+        }
+    }
+
     /**
      * class that handles our spinner's selection events
      */
@@ -124,8 +169,11 @@ public class TextModActivity extends ActionBarActivity {
          *                  android.widget.AdapterView)
          */
         @Override
-        public void onNothingSelected(AdapterView<?> parentView) {
-            // your code here
+        public void onNothingSelected(AdapterView<?> parentView)
+        {
+
+
+
         }
     }
 }
