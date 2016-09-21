@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity  implements View.OnClickListener
+public class TextModActivity extends ActionBarActivity implements View.OnClickListener
 
 {
 
