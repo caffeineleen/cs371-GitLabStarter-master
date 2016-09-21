@@ -10,23 +10,41 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity {
+public class TextModActivity extends ActionBarActivity  implements View.OnClickListener
+
+{
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
+
+    private Button copy;
+    private EditText editText;
+    private Spinner spinner;
+
+    // get spinner object
+    //Spinner spinner = (Spinner)findViewById(R.id.spinner);
+
+    // get array of strings
+   // String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
+
 
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -44,9 +62,11 @@ public class TextModActivity extends ActionBarActivity {
         // Set up the spinner so that it shows the names in the spinner array resources
         //
         // get spinner object
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
+
         // get array of strings
         String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
+
         // create adapter with the strings
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, spinnerNames);
@@ -73,6 +93,11 @@ public class TextModActivity extends ActionBarActivity {
         // define a listener for the spinner
         spinner.setOnItemSelectedListener(new MySpinnerListener());
 
+
+        copy = (Button)findViewById(R.id.button2);
+        copy.setOnClickListener(this);
+
+        editText = (EditText)findViewById(R.id.editText);
     }
 
     /**
@@ -100,7 +125,25 @@ public class TextModActivity extends ActionBarActivity {
             return true;
         }
 
+
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        if (v == copy)
+        {
+            String iD = (String) spinner.getSelectedItem();
+
+            //String name = iD.toString();
+
+            String og = editText.getText().toString();
+
+            editText.setText(og + iD);
+
+        }
+
     }
 
     /**
@@ -124,8 +167,10 @@ public class TextModActivity extends ActionBarActivity {
          *                  android.widget.AdapterView)
          */
         @Override
-        public void onNothingSelected(AdapterView<?> parentView) {
-            // your code here
+        public void onNothingSelected(AdapterView<?> parentView)
+        {
+
+
         }
     }
 }
