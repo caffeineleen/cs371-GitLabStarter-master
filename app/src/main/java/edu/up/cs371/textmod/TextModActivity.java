@@ -25,7 +25,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity implements View.OnClickListener{
+public class TextModActivity extends ActionBarActivity  implements View.OnClickListener
+
+{
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -105,7 +107,6 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
         copy = (Button)findViewById(R.id.button2);
         copy.setOnClickListener(this);
-
     }
 
     /**
@@ -199,8 +200,10 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
          *                  android.widget.AdapterView)
          */
         @Override
-        public void onNothingSelected(AdapterView<?> parentView) {
-            // your code here
+        public void onNothingSelected(AdapterView<?> parentView)
+        {
+
+
         }
     }
 }
