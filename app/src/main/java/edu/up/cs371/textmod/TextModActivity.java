@@ -33,14 +33,23 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
 
+    private Button copy;
+    private EditText editText;
+    private Spinner spinner;
+    private Button button4;
+    private TextView textView;
+
+    // get spinner object
+    //Spinner spinner = (Spinner)findViewById(R.id.spinner);
+
+    // get array of strings
+   // String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
+
+
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
     //@Override
-
-    private Button button4;
-    private TextView textView;
-    private EditText editText;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +64,11 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         // Set up the spinner so that it shows the names in the spinner array resources
         //
         // get spinner object
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
+
         // get array of strings
         String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
+
         // create adapter with the strings
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, spinnerNames);
@@ -91,6 +102,10 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         editText = (EditText) findViewById(R.id.editText);
 
 
+
+        copy = (Button)findViewById(R.id.button2);
+        copy.setOnClickListener(this);
+
     }
 
     /**
@@ -118,13 +133,25 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
             return true;
         }
 
+
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onClick(View v)
     {
-        if(v == button4)
+        if (v == copy)
+        {
+            String iD = (String) spinner.getSelectedItem();
+
+            //String name = iD.toString();
+
+            String og = editText.getText().toString();
+
+            editText.setText(og + iD);
+
+        }
+        else if(v == button4)
         {
             String text = editText.getText().toString();
 
@@ -146,7 +173,10 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
             editText.setText(reversed);
         }
+
     }
+
+
 
     /**
      * class that handles our spinner's selection events
@@ -169,11 +199,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
          *                  android.widget.AdapterView)
          */
         @Override
-        public void onNothingSelected(AdapterView<?> parentView)
-        {
-
-
-
+        public void onNothingSelected(AdapterView<?> parentView) {
+            // your code here
         }
     }
 }
