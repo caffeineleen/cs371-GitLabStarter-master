@@ -10,13 +10,20 @@
         <item>@mipmap/nuxoll</item>
         <item>@mipmap/vegdahl</item>
         <item>@mipmap/nathan</item>
+        <item>@mipmap/nav</item>
+        <item>@mipmap/catto</item>
+        <item>@mipmap/cloud9</item>
     </array>
 
     <string-array name="spinner_names">
         <item>Sleeping Kitten</item>
         <item>Dr. Andrew Nuxoll</item>
         <item>Dr. Steven Vegdahl</item>
+        <item>Kathleen Elisabeth</item>
+        <item>Justin Jacobs</item>
+        <item>Navreen Kaur</item>
         <item>nathan</item>
     </string-array>
+
 
 </resources>
