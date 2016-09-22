@@ -139,16 +139,17 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
             // your code here
         }
     }
-    public void onClick(View view)
+    public void onClick(View v)
     {
-        if(view == upper)
+        if(v == upper)
         {
             String text = upperCase.getText().toString().toUpperCase();
 
             upperCase.setText(text);
 
+
         }
-        if(view == lower)
+        if(v == lower)
         {
             String text = upperCase.getText().toString().toLowerCase();
             upperCase.setText(text);
