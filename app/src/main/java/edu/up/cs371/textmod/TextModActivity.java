@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity {
+public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -60,7 +60,7 @@ public class TextModActivity extends ActionBarActivity {
         setContentView(R.layout.activity_text_mod);
 
         // set instance variables for our widgets
-        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.imageView);
 
         clear = (Button) findViewById(R.id.button);
         clear.setOnClickListener(this);
@@ -91,8 +91,8 @@ public class TextModActivity extends ActionBarActivity {
         // loop through, adding one image per string
         for (int i = 0; i < spinnerNames.length; i++) {
             // determine the index; use 0 if out of bounds
-            int id = imageIds2.getResourceId(i,0);
-            if (id == 0) id = imageIds2.getResourceId(0,0);
+            int id = imageIds2.getResourceId(i, 0);
+            if (id == 0) id = imageIds2.getResourceId(0, 0);
             // load the image; add to arraylist
             Bitmap img = BitmapFactory.decodeResource(getResources(), id);
             images.add(img);
@@ -178,7 +178,7 @@ public class TextModActivity extends ActionBarActivity {
 
             editText.setText(reversed);
         }
-        else if(view == clear) {
+        else if(v == clear) {
             clearText.setText("");
 
         }
@@ -194,7 +194,7 @@ public class TextModActivity extends ActionBarActivity {
 
         /**
          * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(
-         *                  android.widget.AdapterView, android.view.View, int, long)
+         *android.widget.AdapterView, android.view.View, int, long)
          */
         @Override
         public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
@@ -205,11 +205,15 @@ public class TextModActivity extends ActionBarActivity {
 
         /**
          * @see android.widget.AdapterView.OnItemSelectedListener#onNothingSelected(
-         *                  android.widget.AdapterView)
+         *android.widget.AdapterView)
          */
         @Override
         public void onNothingSelected(AdapterView<?> parentView) {
             // your code here
         }
+
+
     }
+
+
 }
